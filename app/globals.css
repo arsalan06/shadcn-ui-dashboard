@@ -1,0 +1,197 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  /* The design has no monospace face — tabular-nums on the sans font handles
+     numeric alignment instead. This is an unloaded system fallback, kept only
+     so the `font-mono` utility degrades sanely if something reaches for it. */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #f1f5f9;
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  /* Citadel red — the brand color, used for the sidebar's active pill and
+     logo badge. One token drives every filled button, checked control, and
+     focus ring app-wide; change it here and it changes everywhere it's
+     consumed. */
+  --primary: #be1d2c;
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: #be1d2c;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  /* Sidebar in light mode: a pale blue-gray panel with dark text, so the
+     heavy navy field is reserved for dark mode (see the .dark block below).
+     The accent stays the same brand red as --primary in both themes. */
+  --sidebar: #fff;
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #be1d2c;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: #be1d2c;
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: #be1d2c;
+
+  /* Default font pick for the appearance panel's font-family switcher —
+     overridden per `data-font` on <html> below. */
+  --font-sans: var(--font-jakarta);
+}
+
+[data-font="inter"] {
+  --font-sans: var(--font-inter);
+}
+
+[data-font="manrope"] {
+  --font-sans: var(--font-manrope);
+}
+
+[data-font="outfit"] {
+  --font-sans: var(--font-outfit);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  /* Same brand red as light mode — a primary button stays the same color
+     across the theme toggle rather than re-deriving from the dark neutrals. */
+  --primary: #be1d2c;
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: #be1d2c;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  /* Sidebar in dark mode: the brand navy field — light mode gets a pale
+     blue-gray panel instead (see :root above). */
+  --sidebar: #0f2947;
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #be1d2c;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: #be1d2c;
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.985 0 0 / 50%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+/* ---------------------------------------------------------------------------
+   Data-visualisation tokens.
+
+   Status is a fixed four-role palette that is never themed: the same four
+   hexes serve light and dark. They always ship as icon + label (see
+   StatusChip) so a status never reads by colour alone.
+
+   The over/short bars are a *diverging* encoding — blue/red poles around a
+   neutral grey midpoint — so the sign of a variance is legible before the
+   number is read.
+--------------------------------------------------------------------------- */
+:root {
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #d03b3b;
+
+  --viz-pos: #2a78d6;
+  --viz-neg: #e34948;
+  --viz-mid: #f0efec;
+}
+
+.dark {
+  --viz-pos: #3987e5;
+  --viz-neg: #e66767;
+  --viz-mid: #383835;
+}
+
+@theme inline {
+  --color-status-good: var(--status-good);
+  --color-status-warning: var(--status-warning);
+  --color-status-serious: var(--status-serious);
+  --color-status-critical: var(--status-critical);
+  --color-viz-pos: var(--viz-pos);
+  --color-viz-neg: var(--viz-neg);
+  --color-viz-mid: var(--viz-mid);
+}

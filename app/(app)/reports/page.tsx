@@ -1,0 +1,10 @@
+import type { Metadata } from "next";
+import { ReportsPage } from "@/components/close/reports/reports-page";
+
+export const metadata: Metadata = {
+  title: "Reports",
+};
+
+export default function Page() {
+  return <ReportsPage />;
+}
